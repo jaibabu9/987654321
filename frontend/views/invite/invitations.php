@@ -24,20 +24,20 @@ function filter($item) {
 
     if (strlen($patientfilter) > 0)
      {
-        
-        $pos = strpos($item['patientname'], $patientfilter);
+    	
+    	$pos = strpos($item['patientname'], $patientfilter);
 
-        if ($pos === false) {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+    	if ($pos === false) {
+    		return false;
+    	}
+    	else
+    	{
+    		return true;
+    	}
 
     } else {
         return true;
-    }   
+    }	
 }
 
 $filteredresultData = array_filter($datas, 'filter');
