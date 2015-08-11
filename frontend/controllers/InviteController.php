@@ -124,6 +124,7 @@ class InviteController extends Controller
     {
      
         $datas=Invite::find()->where(['status'=>1,'user_id'=>new \MongoId(Yii::$app->user->identity->_id)])->asArray()->all();                
+        
         $j=0;
         foreach ($datas as $key => $value)
         {
@@ -135,9 +136,17 @@ class InviteController extends Controller
             $j=$j+1;
         }    
 
+        $doctors=User::find()->where(['user_role'=>'1'])->asArray()->all(); 
+        $doctorsData=array();
+        $k=0;
+        foreach ($doctors as $key => $value) {
+           $doctorsData[$k]['label'] = $value['username'];
+           $doctorsData[$k]['value'] = $value['username'];
+           $doctorsData[$k]['id'] = (string)$value['_id'];
+           $k=$k+1;
+        }
         
-
-        return $this->render('invitations', ['datas' => $datas]);
+        return $this->render('invitations', ['datas' => $datas,'doctors'=>$doctorsData]);
     }
 
     public function actionDecide()
@@ -147,10 +156,12 @@ class InviteController extends Controller
         $invite = Invite::find()->where(["_id"=>$inviteid])->one();
         if($status=='1')
         {
+            Yii::$app->session->setFlash('success', 'Invitation accepted successfully');
             $invite->status=2;  
         }        
         if($status=='2')
         {
+            Yii::$app->session->setFlash('success', 'Invitation rejected successfully');
             $invite->status=3;  
         }
         $invite->save();
@@ -158,5 +169,26 @@ class InviteController extends Controller
 
     }
 
+    public function actionReferdoc()
+    {
+        if(Yii::$app->request->post())
+        {
+            $post=Yii::$app->request->post();          
+            $inviteid= $post['invite-id'];
+            $invite = Invite::find()->where(["_id"=>$inviteid])->one();
+            $invite->doc_comments=$post['message-text'];
+            $invite->user_id=new \MongoId($post['recipient-id']);
+            $invite->save();
+            Yii::$app->session->setFlash('success', 'Invitation transferred successfully');
+            return $this->redirect(['invitations']);
+        }
+    }
+
+    public function actionSend(){
+        \Yii::$app->mail->compose()
+        ->setFrom('muthupalani1986@gmail.com')
+        ->setTo('muthupalani1986@gmail.com')
+        ->setSubject('This is a test mail ' )
+        ->send();
+    }
 }
-//eXAMPLE COMMENTS

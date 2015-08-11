@@ -38,6 +38,8 @@ class Invite extends \yii\mongodb\ActiveRecord
             'patient_id',
             'description',
             'status',
+            'refered_by',
+            'doc_comments',
             'msg_status',
             'created_at',
         ];
@@ -49,7 +51,7 @@ class Invite extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'patient_id', 'description', 'status', 'msg_status', 'created_at'], 'safe'],
+            [['user_id', 'patient_id', 'description', 'status', 'msg_status', 'created_at','refered_by','doc_comments'], 'safe'],
 
         ];
     }
@@ -67,6 +69,8 @@ class Invite extends \yii\mongodb\ActiveRecord
             'status' => 'Status',
             'msg_status' => 'Msg Status',
             'created_at' => 'Created At',
+            'refered_by'=>'Refered by',
+            'doc_comments'=>'Comments',
         ];
     }
 

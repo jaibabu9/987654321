@@ -2,6 +2,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\ArrayDataProvider; 
+use yii\web\JsExpression;
+use yii\jui\Autocomplete;
 /* // Sameple array DataProvider
 $resultData = [
     array("id"=>1,"name"=>"Cyrus","email"=>"risus@consequatdolorvitae.org"),
@@ -22,20 +24,20 @@ function filter($item) {
 
     if (strlen($patientfilter) > 0)
      {
-    	
-    	$pos = strpos($item['patientname'], $patientfilter);
+        
+        $pos = strpos($item['patientname'], $patientfilter);
 
-    	if ($pos === false) {
-    		return false;
-    	}
-    	else
-    	{
-    		return true;
-    	}
+        if ($pos === false) {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
 
     } else {
         return true;
-    }	
+    }   
 }
 
 $filteredresultData = array_filter($datas, 'filter');
@@ -53,6 +55,8 @@ $dataProvider = new ArrayDataProvider([
             'attributes' => ['docname', 'patientname'],
         ],
 ]);
+
+
 
 echo GridView::widget([
         'dataProvider' => $dataProvider,
@@ -80,14 +84,89 @@ echo GridView::widget([
                 'value' => function ($model) {  
                     
                     $accept=Html::a('Accept', ['decide','id' => (string)$model['_id'],'status'=>'1'], ['class' => 'btn btn-success']);                  
-                    $reject=Html::a('Raject', ['decide','id' => (string)$model['_id'],'status'=>'2'], ['class' => 'btn btn-danger']);
-                    $abc='<div>'.$accept. ' '. $reject.'</div>';
-                        return $abc;
+                    $reject=Html::a('Reject', ['decide','id' => (string)$model['_id'],'status'=>'2'], ['class' => 'btn btn-danger']);
+                    $refer_to_other_doc='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#referModal" data-inviteid="'.(string)$model['_id'].'">Refer</button>';
+                    $actionContent='<div>'.$accept. ' '. $reject.' '.$refer_to_other_doc.'</div>';
+                        return $actionContent;
                 },
             ],
             
 
     ]
 ]);
+//ExAMPLE COMMENT FOR CHECKING
 
+
+?>
+
+<style>
+.ui-autocomplete {
+    z-index: 1060; //more than z-index for modal = 1050
+}
+</style>
+
+<div class="modal fade" id="referModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+
+      <div class="modal-body">
+        <form action="referdoc" method="post" role="form">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Recipient:</label>
+            <input type="hidden" class="form-control" id="recipient-id"  name='recipient-id'>
+             <input type="hidden" class="form-control" id="invite-id"  name='invite-id'>
+
+           <?php
+            echo AutoComplete::widget([
+    'name' => 'company',
+    'id' => 'ddd',
+    'clientOptions' => [
+      'source' => $doctors,
+      'autoFill'=>true,
+      'minLength'=>'0',
+      'select' => new JsExpression("function( event, ui ) {
+        console.log(ui);
+        $('#recipient-id').val(ui.item.id);
+      }")
+
+
+    ],
+    'options' => [
+     'class' => 'form-control',
+    ],
+
+  ]);
+           ?>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Message:</label>
+            <textarea class="form-control" id="message-text" name="message-text"></textarea>
+            <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+          </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<?php
+$this->registerJs('$("document").ready(function(){ 
+
+ $("#referModal").on("show.bs.modal", function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data("inviteid") // Extract info from data-* attributes
+  var recipientUsername = button.data("docusername") // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  
+  var modal = $(this)
+  
+  modal.find(".modal-body #invite-id").val(recipient)
+});
+
+ });');
 ?>
