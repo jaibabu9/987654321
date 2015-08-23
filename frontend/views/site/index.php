@@ -1,51 +1,169 @@
-<?php
-/* @var $this yii\web\View */
-$this->title = 'My Yii Application';
-?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+<section class=" mobPad-margBottom" >
+    <div class="container" >
+        <form role="form" id="registerForm" class="form-horizontal" >
+            <div class="col-md-8 secPadMarg md-displayNone concept-container"  >
+                <div class="bulb-pulse-container">
+                    <div class="circle-top ">
+                        <div class="bulb-circle ">
+                            <div class="medi-item medi-img-2">
+                                <div class="medi-info-wrap">
+                                    <div class="medi-info">
+                                        <div class="medi-info-front medi-img-2"></div>
+                                            <div class="medi-info-back">
+                                                <h3>I'm</h3>
+                                                <p>Patient <a id="demo02"  href="#lightSpeedIn">View Me</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>      
+                        </div>
+                        <div class="bulb-pulse animateTwo"></div>
+                    </div>  
+                    
+                    <div class="circle-leftCenter">
+                        <div class="bulb-pulse animateTwo"></div>
+                        <div class="bulb-circle">
+                            <div class="medi-item medi-img-3">
+                                <div class="medi-info-wrap">
+                                    <div class="medi-info">
+                                        <div class="medi-info-front medi-img-3"></div>
+                                            <div class="medi-info-back">
+                                                <h3>I'm</h3>
+                                                <p>Baby <a href="#">Click Me</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>      
+                        </div>
+                    </div>            
+                     
+                    <div class="circle-rightCenter">
+                        <div class="bulb-circle ">
+                            <div class="medi-item medi-img-4">
+                                <div class="medi-info-wrap">
+                                    <div class="medi-info">
+                                        <div class="medi-info-front medi-img-4"></div>
+                                            <div class="medi-info-back">
+                                                <h3>I'm</h3>
+                                                <p>Preganent <a href="#">View Me</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>      
+                        </div>
+                        <div class="bulb-pulse animateTwo"></div>
+                    </div> 
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+                    <div class="circle-bottomLeft">
+                        <div class="bulb-pulse animateTwo"></div>
+                        <div class="bulb-circle">
+                            <div class="medi-item medi-img-5">
+                                <div class="medi-info-wrap">
+                                    <div class="medi-info">
+                                        <div class="medi-info-front medi-img-5"></div>
+                                            <div class="medi-info-back">
+                                                <h3>Medical</h3>
+                                                <p>Rep <a href="#">Click Me</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+                    <div class="circle-bottomRight">
+                        <div class="bulb-circle ">          
+                            <div class="medi-item medi-img-6">
+                                <div class="medi-info-wrap">
+                                    <div class="medi-info">
+                                        <div class="medi-info-front medi-img-6"></div>
+                                            <div class="medi-info-back">
+                                                <h3>Medical</h3>
+                                                <p>Shop <a href="#">Click Me</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bulb-pulse animateTwo"></div>
+                    </div> 
+                    
+                    <div class="circle-bottom">
+                        <div class="bulb-circle ">          
+                            <div class="medi-item medi-img-7">
+                                <div class="medi-info-wrap">
+                                    <div class="medi-info">
+                                        <div class="medi-info-front medi-img-7"></div>
+                                            <div class="medi-info-back">
+                                                <h3>Blood</h3>
+                                                <p>Donar's <a href="#">Click Me</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bulb-pulse animateTwo"></div>
+                    </div> 
 
-    <div class="body-content">
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                    <div class="circle-center ">
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                    <div class=" spinner">
+                                  <div class="bounce-centerOne "></div>
+                                  <div class="bounce-centerTwo "></div>
+                   </div>
+                        <div class="bulb-center">   
+                            <div class="medi-item medi-img-2">
+                                <div class="medi-info-wrap">
+                                    <div class="medi-info">
+                                        <div class="medi-info-front medi-img-1"></div>
+                                            <div class="medi-info-back">
+                                                <h3>I'm</h3>
+                                            <p>Doctor <a href="#">Click Me</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <div class="col-md-4 col-xs-9 fRight md-floatNone "  >
+                <div class="signUp-container register-container">
+                    <h2 class="signUp-text">Sign-Up :</h2>
+                     <div class="form-group">
+                        <div class=" selectContainer">
+                            <select class="form-control" name="category" id="category">
+                               <option>Select Category</option>
+                               <option>Doctor</option>
+                               <option>Patient</option>
+                               <option>Representative</option>
+                            </select>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <input type="text" class="form-control" name="reg_username" placeholder="User Name" />
+                    </div>
+                    <div class="form-group">
+                             <input type="password" class="form-control" name="reg_password" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" />
+                    </div>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                     <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email Address" />
+                    </div>
+                    <div class="form-group ">
+                        <input  type="submit" class="btn btn-white" value="Sign Up" /> 
+                        <input type="reset" class="btn btn-white" value="Reset"/>
+                    </div>
+                </div>
+                
+            
+                
             </div>
         </div>
-
-    </div>
-</div>
+</section>
