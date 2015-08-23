@@ -146,7 +146,7 @@ AppAsset::register($this);
         </div>
    </div>
 <div class="copyRight">
-<p>Copyrights &copy; 2014. Medi-Point All Rights are Reserved</p>
+<p>Copyrights &copy; 2014. HanSam Technogies All Rights are Reserved</p>
 </div>
 </footer>
 
