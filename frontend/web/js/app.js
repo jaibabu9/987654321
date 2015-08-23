@@ -1,1 +1,2 @@
-var app=angular.module("headerLogin",[]);
+var headerLoginApp=angular.module("headerLogin",[]);
+var registrationApp=angular.module("registration",[]);

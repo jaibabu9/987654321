@@ -1,6 +1,6 @@
 
 <section class=" mobPad-margBottom" >
-    <div class="container" >
+    <div class="container" data-ng-app="registration">
         <form role="form" id="registerForm" class="form-horizontal" >
             <div class="col-md-8 secPadMarg md-displayNone concept-container"  >
                 <div class="bulb-pulse-container">
@@ -166,4 +166,5 @@
                 
             </div>
         </div>
+    </form>
 </section>
