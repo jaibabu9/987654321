@@ -13,6 +13,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use frontend\models\Profile;
+use frontend\models\User;
 /**
  * Site controller
  */
@@ -44,6 +45,7 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'login' => ['post'],
                 ],
             ],
         ];
@@ -216,4 +218,66 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionChecklogin()
+  {
+ 
+      $params=$_POST;
+      $customer = json_decode(file_get_contents("php://input"),true);
+        // print_r($customer); die;
+
+        $username=User::find()->where(['username' => $customer['username']])->one();
+        if(!$username){
+
+      $this->setHeader(200);
+      echo json_encode(array('status'=>1, 'data' => 'Username does not exist'),JSON_PRETTY_PRINT);
+        }
+        $pass = User::find()->where(['username'=> $customer['username'], 'password' => md5($customer['password'])])->one();
+        if(!$pass){
+            
+      $this->setHeader(200);
+      echo json_encode(array('status'=>1, 'data' => 'password does not match'),JSON_PRETTY_PRINT);
+        }else
+        {
+            Yii::$app->user->login(User::findByUsername($customer['username']), 3600 * 24 * 30 );
+            $this->setHeader(200);
+            echo json_encode(array('user_role'=>$username['user_role']),JSON_PRETTY_PRINT);
+        }
+
+
+ 
+        //return $this->redirect(['contact']);
+
+ 
+  }
+
+
+      private function setHeader($status)
+      {
+ 
+      $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
+      $content_type="application/json; charset=utf-8";
+ 
+      header($status_header);
+      header('Content-type: ' . $content_type);
+      header('X-Powered-By: ' . "Nintriva <nintriva.com>");
+      }
+    private function _getStatusCodeMessage($status)
+    {
+    // these could be stored in a .ini file and loaded
+    // via parse_ini_file()... however, this will suffice
+    // for an example
+    $codes = Array(
+        200 => 'OK',
+        400 => 'Bad Request',
+        401 => 'Unauthorized',
+        402 => 'Payment Required',
+        403 => 'Forbidden',
+        404 => 'Not Found',
+        500 => 'Internal Server Error',
+        501 => 'Not Implemented',
+    );
+    return (isset($codes[$status])) ? $codes[$status] : '';
+    }
+
 }

@@ -34,7 +34,8 @@ AppAsset::register($this);
 
     <div class="wrap">
          <?php
-         /*
+         if(!Yii::$app->user->isGuest)
+         {
             NavBar::begin([
                 'brandLabel' => 'My Company',
                 'brandUrl' => Yii::$app->homeUrl,
@@ -42,6 +43,8 @@ AppAsset::register($this);
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
+        }
+
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'About', 'url' => ['/site/about']],
@@ -65,18 +68,22 @@ AppAsset::register($this);
                 ];
             }
            
+           if(!Yii::$app->user->isGuest)
+           {
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
-            ]);*/
+            ]);
+        }
 ?>
    <div class="bg-sky-effect">
         <div class="moving-one"></div>
         <div class="moving-two"></div>
         <div class="moving-three"></div>
     </div> 
-
-<header  class="bg-blue headerHgt posFixedTop " role="banner" data-ng-app="headerLogin">
+<?php if(Yii::$app->user->isGuest): ?>
+<header  class="bg-blue headerHgt posFixedTop " role="banner" data-ng-app="headerLogin" data-ng-controller="loginController">
+    <form name="login" novalidate>
     <div class="container">
         <div class="row ">    
             <!-- Header Start here -->
@@ -90,26 +97,30 @@ AppAsset::register($this);
             </div>
             <div class="col-md-4 col-xs-12 margTop20px padLeftNull fRight moveTab">
                 <div class=" form-group" id="userDisplay">
-                    <input type="text" class="input-md " name="username"  data-ng-model="username" placeholder="User Name" id="userName" />
+                    <input type="text" class="input-md " name="username"  data-ng-model="username" data-ng-required="true" placeholder="User Name" id="userName" />
+                    <span data-ng-show="login.username.$dirty && login.username.$error.required">Username is required</span>
                     <input  type="reset" class="btn btn-white" id="nextBtn" value="Next" /> 
                 </div>
                  <div class=" form-group displayNone" id="passDisplay">
                      <a href="#" class="fontSize11 displayBlock link-white forgotPass">Forgot Password</a>
-                     <input type="password" class="input-md " data-ng-model="password" name="password" id="passWord" placeholder="Password" />
-                     <input  type="reset" class="btn btn-white" value="Login" /> 
+                     <input type="password" class="input-md " data-ng-model="password" data-ng-required="true" name="password" id="passWord" placeholder="Password" />
+                     <span data-ng-show="login.password.$dirty && login.password.$error.required">Password is required</span>
+                     <input  type="reset" class="btn btn-white" value="Login"  data-ng-click="validateLogin()"/> 
                 </div>
             </div>
         </div>
     </div>
-
+</form>
 </header>
-
+<?php endif;?>
 
 
 
 <?php
-
-            //NavBar::end();
+            if(!Yii::$app->user->isGuest)
+            {
+            NavBar::end();
+            }
 
 
         ?>

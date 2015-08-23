@@ -22,7 +22,7 @@
                 
                 $('#nextBtn').on('click', function (){
                 var texted=$("#userName").val();
-                                if (texted.length >= 10 && texted.length !=''){
+                                if (texted.length >= 2 && texted.length !=''){
                                                 $('.userText').html('').append('<img src="images/pf.jpg" alt="profile Image" />&nbsp;' + texted + '@gmail.com').css('text-transform','capitalize');
                                                 $('#userDisplay, #nextBtn').hide()
                                                 $('#passDisplay').show()
