@@ -344,6 +344,16 @@
          75% {-moz-transform: scale(1.2);}
 		}
 
+/* Overrite YII framework*/
+.site-login{z-index: 999; position: relative; width: 100%;  padding:20px 40px;  background:#39BEB9;  border-radius: 3px; box-shadow: 1px -1px 8px #666;}
+.site-login h1{font-size:20px; font-weight: bold; color:#FFF; margin-bottom: 20px}
+.site-login .field-loginform-username, .site-login .field-loginform-password, .site-login .field-loginform-rememberme, .forgot-password { color:#FFF; }
+.forgot-password{font-size:12px; font-weight: bold; }
+.resetPassword{color:#FFF; text-decoration: underline;}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label{color:#C4EBEA;}
+.help-block-error{font-size: 12px;}
+
 @media only screen and (min-device-width:480px) and (max-device-width:980px){ 
 .md-displayNone{display:none}
 .moveTab{position:absolute; top:100px; left:25px;}
