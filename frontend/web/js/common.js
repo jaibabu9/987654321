@@ -1,7 +1,7 @@
 // JavaScript Document
             $(document).ready(function(){
                 
-                
+                $('#yii-debug-toolbar').hide();
 
 // To initially run the function:
 //$(window).resize();

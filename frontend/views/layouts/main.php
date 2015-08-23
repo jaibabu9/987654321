@@ -76,7 +76,7 @@ AppAsset::register($this);
         <div class="moving-three"></div>
     </div> 
 
-<header  class="bg-blue headerHgt posFixedTop " role="banner">
+<header  class="bg-blue headerHgt posFixedTop " role="banner" data-ng-app="headerLogin">
     <div class="container">
         <div class="row ">    
             <!-- Header Start here -->
@@ -90,17 +90,18 @@ AppAsset::register($this);
             </div>
             <div class="col-md-4 col-xs-12 margTop20px padLeftNull fRight moveTab">
                 <div class=" form-group" id="userDisplay">
-                    <input type="text" class="input-md " name="username" placeholder="User Name" id="userName" />
+                    <input type="text" class="input-md " name="username"  data-ng-model="username" placeholder="User Name" id="userName" />
                     <input  type="reset" class="btn btn-white" id="nextBtn" value="Next" /> 
                 </div>
                  <div class=" form-group displayNone" id="passDisplay">
                      <a href="#" class="fontSize11 displayBlock link-white forgotPass">Forgot Password</a>
-                     <input type="password" class="input-md " name="password" id="passWord" placeholder="Password" />
+                     <input type="password" class="input-md " data-ng-model="password" name="password" id="passWord" placeholder="Password" />
                      <input  type="reset" class="btn btn-white" value="Login" /> 
                 </div>
             </div>
         </div>
     </div>
+
 </header>
 
 
